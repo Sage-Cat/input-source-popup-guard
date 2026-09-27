@@ -1,0 +1,9 @@
+{
+  "uuid": "input-source-popup-guard-v2@sagecat.local",
+  "name": "Input Source Popup Guard v2",
+  "description": "GNOME 46 input-source popup lifecycle recovery with read-only diagnostics",
+  "shell-version": [
+    "46"
+  ],
+  "version": 3
+}

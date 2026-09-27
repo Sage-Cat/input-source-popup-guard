@@ -1,0 +1,14 @@
+{
+  "name": "input-source-popup-guard",
+  "extensions": [
+    {
+      "directory": ".",
+      "files": [
+        "metadata.json",
+        "extension.js",
+        "guard.js",
+        "buildInfo.js"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js","check":"node --check extension.js && node --check guard.js"}}
