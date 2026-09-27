@@ -2,7 +2,7 @@
 
 ![Read-only diagnostics](screenshots/diagnostics.png)
 
-Read-only diagnostics from GNOME Shell 46.2. This image uses the current extension's
+Read-only diagnostics from GNOME Shell 46.0. This image uses the current extension's
 actual `GetState` response in a disposable headless GNOME Shell with a private
 session bus and configuration. The guard is idle: no layout popup is being held
 open. The terminal-style image renders selected output fields, not a native
