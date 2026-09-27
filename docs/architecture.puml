@@ -1,0 +1,31 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam componentStyle rectangle
+skinparam shadowing false
+title Input Source Popup Guard — GNOME Shell 46
+actor "User" as user
+package "GNOME Shell process" {
+  component "Input source manager\nInputSourcePopup" as popup
+  component "extension.js\nShell adapter" as adapter
+  component "guard.js\nInputSourceGuard policy" as policy
+  component "250 ms watchdog\nOnly while tracking popups" as timer
+  component "Read-only GetState\nOptional RunSelfTest action" as diagnostics
+}
+actor "Diagnostic client" as client
+user --> popup : Layout shortcut / selection
+adapter --> policy : Inject runtime callbacks
+policy --> popup : Hook show / finish / fade\nTrack and destroy own popups
+popup --> policy : Navigation / destroy events
+policy --> timer : Start / stop
+ timer --> policy : Observe visibility and modifiers
+policy --> popup : Recover stale popup\nPreserve newer manager reference
+client --> diagnostics : Session D-Bus
+ diagnostics --> adapter : Query state / request bounded test
+adapter --> policy : State and cleanup
+note bottom of policy
+  Valid selection activates at most once.
+  Other switchers and modal grabs stay outside scope.
+  Disable restores hooks and removes owned timers.
+end note
+@enduml
