@@ -11,7 +11,21 @@ settings window; the guard has no settings panel.
 The screenshot shows the observable baseline rather than manufacturing a frozen
 keyboard. The watchdog and finish paths are covered by the Shell-independent
 regression tests (`make check test`). Optional real-popup testing is described
-under `RunSelfTest` in the [README](../README.md).
+below.
+
+## Optional real-popup test
+
+With the extension enabled in the intended session:
+
+```sh
+gdbus call --session --dest org.gnome.Shell \
+  --object-path /org/sagecat/InputSourceGuard \
+  --method org.sagecat.InputSourceGuard.RunSelfTest
+```
+
+This creates and cleans up test popups without changing layouts; it refuses
+locked or modal sessions. Replace `RunSelfTest` with `GetState` for read-only
+diagnostics instead.
 
 ## Refresh diagnostics
 
